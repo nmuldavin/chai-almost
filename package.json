@@ -1,19 +1,30 @@
 {
   "name": "chai-almost",
   "version": "0.1.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nmuldavin/chai-almost.git"
-  },
+  "description": "Extends chai with assertions that allow for floating point rounding errors",
+  "main": "lib/index.js",
+  "repository": "https://github.com/nmuldavin/chai-almost.git",
   "author": "Noah Muldavin <nmuldavin@gmail.com>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/nmuldavin/chai-almost/issues"
+  "license": "MIT",
+  "scripts": {
+    "build": "babel src -d lib",
+    "test": "mocha test",
+    "test:watch": "mocha test -w"
   },
-  "homepage": "https://github.com/nmuldavin/chai-almost#readme"
+  "dependencies": {
+    "deep-eql": "^2.0.2",
+    "type-detect": "^4.0.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.4.0",
+    "chai": "^3.5.0",
+    "eslint": "^3.19.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-node": "^4.2.2",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "mocha": "^3.3.0"
+  }
 }

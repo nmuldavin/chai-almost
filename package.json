@@ -2,12 +2,11 @@
   "name": "chai-almost",
   "version": "0.9.1",
   "description": "Extends chai with assertions that allow for floating point rounding errors",
-  "main": "lib/index.js",
+  "main": "index.js",
   "repository": "https://github.com/nmuldavin/chai-almost.git",
   "author": "Noah Muldavin <nmuldavin@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "babel src -d lib",
     "test": "mocha test",
     "test:watch": "mocha test -w"
   },
@@ -16,8 +15,6 @@
     "type-detect": "^4.0.3"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-preset-env": "^1.4.0",
     "chai": "^3.5.0",
     "eslint": "^3.19.0",
     "eslint-config-standard": "^10.2.1",

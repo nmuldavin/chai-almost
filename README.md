@@ -1,5 +1,7 @@
 # chai-almost
 
+[![npm](https://img.shields.io/npm/v/chai-roughly.svg)](https://www.npmjs.com/package/chai-almost)
+
 Extends [chai](https://github.com/chaijs/chai) with assertions that allow numbers to be "almost" equal (as in, within some tolerance of one another). This is useful in particular when accounting for floating point rounding errors or other approximations.
 
 ## Installation

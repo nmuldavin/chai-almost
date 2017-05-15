@@ -1,6 +1,6 @@
 {
   "name": "chai-almost",
-  "version": "0.1.0",
+  "version": "0.9.0",
   "description": "Extends chai with assertions that allow for floating point rounding errors",
   "main": "lib/index.js",
   "repository": "https://github.com/nmuldavin/chai-almost.git",

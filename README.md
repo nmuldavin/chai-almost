@@ -1,5 +1,6 @@
 # chai-almost
 
+[![travis](https://travis-ci.org/nmuldavin/chai-almost.svg?branch=master)](https://travis-ci.org/nmuldavin/chai-almost)
 [![npm](https://img.shields.io/npm/v/chai-almost.svg)](https://www.npmjs.com/package/chai-almost)
 
 Extends [chai](https://github.com/chaijs/chai) with assertions that allow numbers to be "almost" equal (as in, within some tolerance of one another). This is useful in particular when accounting for floating point rounding errors or other approximations.

@@ -17,20 +17,8 @@ const comparator = tolerance => (left, right) => {
 }
 
 const chaiAlmost = (standardTolerance = DEFAULT_TOLERANCE) => ({ Assertion }, { flag }) => {
-  function method (expected, customTolerance = standardTolerance) {
-    return this.closeTo(expected, customTolerance)
-  }
-
-  function defaultChainingBehavior () {
-    flag(this, 'tolerance', standardTolerance)
-  }
-
-  function customChainingBehavior (tolerance) {
-    flag(this, 'tolerance', tolerance)
-  }
-
-  function assertEqual (_super) {
-    return function (val, msg) {
+  function overrideAssertEqual (_super) {
+    return function assertEqual (val, msg) {
       if (msg) flag(this, 'message', msg)
 
       const deep = flag(this, 'deep')
@@ -53,8 +41,8 @@ const chaiAlmost = (standardTolerance = DEFAULT_TOLERANCE) => ({ Assertion }, { 
     }
   }
 
-  function assertEql (_super) {
-    return function (val, msg) {
+  function overrideAssertEql (_super) {
+    return function assertEql (val, msg) {
       if (msg) flag(this, 'message', msg)
 
       const tolerance = flag(this, 'tolerance')
@@ -74,15 +62,24 @@ const chaiAlmost = (standardTolerance = DEFAULT_TOLERANCE) => ({ Assertion }, { 
     }
   }
 
-  Assertion.addMethod('almost', method)
-  Assertion.addChainableMethod('almost', customChainingBehavior, defaultChainingBehavior)
+  function method (val, customTolerance = standardTolerance) {
+    flag(this, 'tolerance', customTolerance)
 
-  Assertion.overwriteMethod('equal', assertEqual)
-  Assertion.overwriteMethod('equals', assertEqual)
-  Assertion.overwriteMethod('eq', assertEqual)
+    return this.equal(val)
+  }
 
-  Assertion.overwriteMethod('eql', assertEql)
-  Assertion.overwriteMethod('eqls', assertEql)
+  function chainingBehavior () {
+    flag(this, 'tolerance', standardTolerance)
+  }
+
+  Assertion.addChainableMethod('almost', method, chainingBehavior)
+
+  Assertion.overwriteMethod('equal', overrideAssertEqual)
+  Assertion.overwriteMethod('equals', overrideAssertEqual)
+  Assertion.overwriteMethod('eq', overrideAssertEqual)
+
+  Assertion.overwriteMethod('eql', overrideAssertEql)
+  Assertion.overwriteMethod('eqls', overrideAssertEql)
 }
 
 module.exports = chaiAlmost

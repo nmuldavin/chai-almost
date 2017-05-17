@@ -34,7 +34,7 @@ The `almost` assertion may be used chainably with deep or shallow equality:
 
 ```
 // shallow
-expect(3.9999999).to.almost.equal(4);	// passes
+expect(3.9999999).to.almost.equal(4);	        // passes
 expect(3.9).to.almost.equal(4);			// fails
 expect(4.0000001).to.be.almost(4);		// passes
 expect(4.1).to.not.be.almost(4);		// passes

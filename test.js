@@ -30,17 +30,17 @@ describe('chaiAlmost', function () {
       })
     })
 
-    describe('with deep equality', function () {
-      it('should modify deep equality checks to allow default tolerance for numbers', function () {
-        var exp = { taco: 'pastor', quantity: 3 }
-        var good = { taco: 'pastor', quantity: 2.9999999 }
-        var bad = { taco: 'pastor', quantity: 3.1 }
+    describe('with array equality', function () {
+      it('should modify array equality checks to allow default tolerance for numbers', function () {
+        var exp = ['pastor',  3 ];
+        var good = ['pastor',  2.9999999 ];
+        var bad = [ 'pastor',  3.1 ];
 
-        expect(good).to.be.deep.almost(exp)
-        expect(bad).to.not.be.deep.almost(exp)
+        expect(good).to.be.deep.almost(exp);
+        expect(bad).to.not.be.deep.almost(exp);
       })
       
-      it('should modify deep-deep equality checks on arrays & objects to allow default tolerance for numbers', function () {
+      it('should modify deep-deep equality checks on arrays with objects objects with default tolerance', function () {
         var exp = [{ taco: 'pastor', quantity: 3 },
                    { taco: 'pastor', quantity: [{a:2,b:1}], ref:[3,4] }];
         var good = [{ taco: 'pastor', quantity: 2.9999999 },
@@ -54,7 +54,18 @@ describe('chaiAlmost', function () {
         expect(bad1).to.not.be.deep.almost(exp)
         expect(bad2).to.not.be.deep.almost(exp)
       })
+    })
+    
+    describe('with deep equality', function () {
+      it('should modify deep equality checks on objects to allow default tolerance for numbers', function () {
+        var exp = { taco: 'pastor', quantity: 3 }
+        var good = { taco: 'pastor', quantity: 2.9999999 }
+        var bad = { taco: 'pastor', quantity: 3.1 }
 
+        expect(good).to.be.deep.almost(exp)
+        expect(bad).to.not.be.deep.almost(exp)
+      })
+      
       it('should modify deep equality checks to allow custom tolerance for numbers', function () {
         var exp = { taco: 'pastor', quantity: 10 }
         var good = { taco: 'pastor', quantity: 29 }
